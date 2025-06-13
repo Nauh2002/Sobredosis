@@ -39,8 +39,14 @@ data class Presentador(val nombre: String, val email: String)
 
 
 abstract class RestriccionPrograma {
+    val acciones = mutableListOf<AccionRevisionPrograma>()
 
     abstract fun seCumple(programa: Programa): Boolean
+
+    fun ejecutarAcciones(programa: Programa, grilla: Grilla) {
+        acciones.forEach { accion ->
+            accion.ejecutar(programa, grilla) }
+    }
 
 }
 
